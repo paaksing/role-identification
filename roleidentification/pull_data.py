@@ -1,3 +1,4 @@
+
 def pull_data():
     import requests
     r = requests.get("http://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/championrates.json")
