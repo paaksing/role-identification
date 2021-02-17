@@ -136,15 +136,26 @@ function getPositions(championPositions, composition, top, jungle, middle, adc, 
     return { bestPositions, bestMetric, confidence, secondBestPositions }
 }
 
-function getRoles(championPositions, composition) {
-    const identified = {}
+function identifiedUppercase(obj) {
+    let key, keys = Object.keys(obj)
+    let n = keys.length
+    let newobj = {}
+    while (n--) {
+        key = keys[n]
+        newobj[key.toUpperCase()] = obj[key]
+    }
+    return newobj
+}
+
+function getRoles(championPositions, composition, identified) {
+    identified = identifiedUppercase(identified)
     let positions = {}
     let secondaryPositions = null
     let secondaryMetric = -Infinity
     
     while (Object.keys(identified).length < composition.length - 1) {
         let { bestPositions, bestMetric: metric, confidence, secondBestPositions: sbp } =
-        getPositions(championPositions, composition, identified.TOP, identified.JUNGLE, identified.MIDDLE, identified.ADC, identified.SUPPORT)
+        getPositions(championPositions, composition, identified.TOP, identified.JUNGLE, identified.MIDDLE, identified.BOTTOM, identified.UTILITY)
         
         positions = bestPositions
         
