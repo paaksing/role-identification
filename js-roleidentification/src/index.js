@@ -200,7 +200,7 @@ function getMostPlayed(championRoles, role, champs) {
     identified = null
     for (champ of champs) {
         playrate = championRoles[champ][role]
-        if (highest === null || playrate > highest) {
+        if (playrate > highest) {
             highest = playrate
             identified = champ
         }
