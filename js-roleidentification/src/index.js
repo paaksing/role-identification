@@ -196,7 +196,10 @@ function getRoles(championPositions, composition, identified) {
 
 
 function getMostPlayed(championRoles, role, champs) {
-    highest = 0.3
+    if (role == "JUNGLE")
+        highest = -0.1
+    else
+        highest = 0.3
     identified = null
     for (champ of champs) {
         playrate = championRoles[champ][role]

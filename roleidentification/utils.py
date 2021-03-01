@@ -11,7 +11,7 @@ async def thread_run(func, *args, **kwargs):
 
 
 def get_most_played(champion_roles: Dict, role: str, champs: List[int]) -> int:
-    highest = 0.3
+    highest = 0.3 if role != "JUNGLE" else -0.1
     identified = None
     for champ in champs:
         playrate = champion_roles[champ][role]
